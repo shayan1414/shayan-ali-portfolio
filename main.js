@@ -1,22 +1,22 @@
 // Portfolio Projects Data
 const portfolioProjects = [
     {
-        title: "Project 1",
-        description: "Web Application",
-        image: "assets/project1.jpg",
-        link: "#"
+        title: "Age Calculator",
+        description: "A sleek web app for calculating age with precision",
+        link: "https://shayan1414.github.io/Age_Calculator/",
+        github: "https://github.com/shayan1414/Age_Calculator"
     },
     {
-        title: "Project 2",
-        description: "Mobile App",
-        image: "assets/project2.jpg",
-        link: "#"
+        title: "Word Counter",
+        description: "Advanced word and character counting tool",
+        link: "https://shayan1414.github.io/word_counter/",
+        github: "https://github.com/shayan1414/word_counter"
     },
     {
-        title: "Project 3",
-        description: "E-commerce Website",
-        image: "assets/project3.jpg",
-        link: "#"
+        title: "Password Generator",
+        description: "Secure password generation tool with customization",
+        link: "https://shayan1414.github.io/password_generator/",
+        github: "https://github.com/shayan1414/password_generator"
     }
 ];
 
@@ -32,17 +32,18 @@ const skills = [
 
 // Initialize the portfolio section
 function initPortfolio() {
-    const portfolioGrid = document.querySelector('.portfolio-grid');
+    const portfolioGrid = document.querySelector('.projects-grid');
+    if (!portfolioGrid) return;
     
     portfolioProjects.forEach(project => {
         const projectElement = document.createElement('div');
-        projectElement.className = 'portfolio-item';
+        projectElement.className = 'project-card glass-effect';
         projectElement.innerHTML = `
-            <img src="${project.image}" alt="${project.title}">
-            <div class="portfolio-item-content">
-                <h3>${project.title}</h3>
-                <p>${project.description}</p>
-                <a href="${project.link}" class="btn primary">View Project</a>
+            <h3>${project.title}</h3>
+            <p>${project.description}</p>
+            <div class="project-links">
+                <a href="${project.link}" class="demo-link" target="_blank">Live Demo</a>
+                <a href="${project.github}" class="github-link" target="_blank">GitHub</a>
             </div>
         `;
         portfolioGrid.appendChild(projectElement);
@@ -66,42 +67,48 @@ function initSkills() {
 
 // Theme toggler
 function initThemeToggle() {
-    const themeToggle = document.querySelector('.theme-toggle');
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     
     // Set initial theme based on user's system preference
     if (prefersDarkScheme.matches) {
         document.body.setAttribute('data-theme', 'dark');
-        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
     }
     
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = document.body.getAttribute('data-theme');
-        if (currentTheme === 'dark') {
-            document.body.removeAttribute('data-theme');
-            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-        } else {
-            document.body.setAttribute('data-theme', 'dark');
-            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        }
-    });
+    // Add theme toggle button if needed
+    const navbar = document.querySelector('.navbar-nav');
+    if (navbar) {
+        const themeToggle = document.createElement('li');
+        themeToggle.className = 'nav-item ms-lg-3';
+        themeToggle.innerHTML = `
+            <button class="nav-link theme-toggle border-0 bg-transparent">
+                <i class="fas ${prefersDarkScheme.matches ? 'fa-sun' : 'fa-moon'}"></i>
+            </button>
+        `;
+        navbar.appendChild(themeToggle);
+        
+        themeToggle.querySelector('.theme-toggle').addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.body.removeAttribute('data-theme');
+                themeToggle.querySelector('i').className = 'fas fa-moon';
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                themeToggle.querySelector('i').className = 'fas fa-sun';
+            }
+        });
+    }
 }
 
 // Form handling
 function initContactForm() {
     const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return;
     
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
-        // Get form data
         const formData = new FormData(contactForm);
         const data = Object.fromEntries(formData);
-        
-        // Here you would typically send the data to a server
         console.log('Form submitted:', data);
-        
-        // Clear form
         contactForm.reset();
         alert('Thank you for your message! I will get back to you soon.');
     });
@@ -112,41 +119,37 @@ function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu after clicking
+                const navbarToggler = document.querySelector('.navbar-toggler');
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                if (navbarToggler && !navbarToggler.classList.contains('collapsed')) {
+                    navbarToggler.click();
+                }
+            }
         });
     });
 }
 
-// Mobile Menu Toggle
-function initMobileMenu() {
-    const menuBtn = document.querySelector('.menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    const body = document.body;
+// Navbar scroll effect
+function initNavbarScroll() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
     
-    menuBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        menuBtn.classList.toggle('active');
-        body.classList.toggle('menu-open');
-    });
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!navLinks.contains(e.target) && !menuBtn.contains(e.target) && navLinks.classList.contains('active')) {
-            navLinks.classList.remove('active');
-            menuBtn.classList.remove('active');
-            body.classList.remove('menu-open');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('shadow-sm', 'bg-light');
+            if (document.body.getAttribute('data-theme') === 'dark') {
+                navbar.classList.remove('bg-light');
+                navbar.classList.add('bg-dark');
+            }
+        } else {
+            navbar.classList.remove('shadow-sm', 'bg-light', 'bg-dark');
         }
-    });
-    
-    // Close menu when clicking on a link
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            menuBtn.classList.remove('active');
-            body.classList.remove('menu-open');
-        });
     });
 }
 
@@ -157,5 +160,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
     initContactForm();
     initSmoothScroll();
-    initMobileMenu();
+    initNavbarScroll();
 });
