@@ -832,6 +832,7 @@ a:hover {
     padding: var(--spacing-lg);
     transition: right var(--transition-normal);
     z-index: var(--z-navbar);
+    box-shadow: var(--shadow-lg);
   }
 
   .nav-links.active {
@@ -841,10 +842,33 @@ a:hover {
   .nav-links a {
     padding: var(--spacing-sm) 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: left;
+    font-size: 1.1rem;
   }
   
   [data-theme="dark"] .nav-links a {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .menu-btn {
+    display: block;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    transition: transform var(--transition-fast);
+  }
+
+  .menu-btn.active {
+    transform: rotate(90deg);
+  }
+
+  .menu-btn i {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+  }
+
+  body.menu-open {
+    overflow: hidden;
   }
 }
 
