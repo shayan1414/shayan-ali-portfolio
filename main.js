@@ -119,6 +119,37 @@ function initSmoothScroll() {
     });
 }
 
+// Mobile Menu Toggle
+function initMobileMenu() {
+    const menuBtn = document.querySelector('.menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const body = document.body;
+    
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        menuBtn.classList.toggle('active');
+        body.classList.toggle('menu-open');
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !menuBtn.contains(e.target) && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            menuBtn.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+    });
+    
+    // Close menu when clicking on a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            menuBtn.classList.remove('active');
+            body.classList.remove('menu-open');
+        });
+    });
+}
+
 // Initialize everything when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     initPortfolio();
@@ -126,4 +157,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
     initContactForm();
     initSmoothScroll();
+    initMobileMenu();
 });
