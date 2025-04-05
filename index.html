@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shayan Ali - Web Developer & AI Prompt Engineer</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Immediate Styles ok -->
+    <style>
+        body { opacity: 1 !important; }
+        section { opacity: 1 !important; display: block !important; }
+        .nav-container { display: flex !important; }
+        .hero-section { display: flex !important; }
+        /* Remove form-related styles */
+        .form-group {
+            display: none;
+        }
+
+        .submit-btn {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container glass-effect">
+        <div class="logo">
+            <span>Shayan Ali</span>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hi, I'm <span class="highlight">Shayan Ali</span></h1>
+                <p class="typewriter">Transforming Ideas into Reality with Code & AI</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="cta-primary">Hire Me</a>
+                    <a href="#projects" class="cta-secondary">View Projects</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Profile image will be added here -->
+                 <img src="shayan_ali_image.jpg" alt="shayan ali image" srcset="">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content glass-effect">
+            <div class="about-text">
+                <p>I am a passionate Web Developer and AI Prompt Engineer, dedicated to creating innovative digital solutions that make a difference.</p>
+            </div>
+            <div class="expertise-areas">
+                <div class="expertise-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Web Development</h3>
+                    <p>Creating responsive and dynamic web applications</p>
+                </div>
+                <div class="expertise-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI Prompt Engineering</h3>
+                    <p>Crafting effective prompts for AI systems</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <h2 class="section-title">My Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card glass-effect">
+                <h3>Age Calculator</h3>
+                <p>A sleek web app for calculating age with precision</p>
+                <div class="project-links">
+                    <a href="https://shayan1414.github.io/Age_Calculator/" class="demo-link">Live Demo</a>
+                    <a href="https://github.com/shayan1414/Age_Calculator" class="github-link">GitHub</a>
+                </div>
+            </div>
+            <div class="project-card glass-effect">
+                <h3>Word Counter</h3>
+                <p>Advanced word and character counting tool</p>
+                <div class="project-links">
+                    <a href="https://shayan1414.github.io/word_counter/" class="demo-link">Live Demo</a>
+                    <a href="https://github.com/shayan1414/word_counter" class="github-link">GitHub</a>
+                </div>
+            </div>
+            <div class="project-card glass-effect">
+                <h3>Password Generator</h3>
+                <p>Secure password generation tool with customization</p>
+                <div class="project-links">
+                    <a href="https://shayan1414.github.io/password_generator/" class="demo-link">Live Demo</a>
+                    <a href="https://github.com/shayan1414/password_generator" class="github-link">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-container glass-effect">
+            <div class="skill-category">
+                <h3>Frontend Development</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-css3-alt"></i>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-js"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-react"></i>
+                        <span>React</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>AI & Tools</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-robot"></i>
+                        <span>Prompt Engineering</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-brain"></i>
+                        <span>AI Integration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container glass-effect">
+            <form id="contact-form" class="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" required>
+                    <label for="name">Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" required>
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" required></textarea>
+                    <label for="message">Message</label>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:firdoskhan.009988@gmail.com">firdoskhan.009988@gmail.com</a></p>
+                <p>Phone: <a href="tel:+923189718547">+923189718547</a></p>
+            </div>
+            <div class="social-links">
+                <a href="https://www.youtube.com/@ShayanAliLearnLab" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://github.com/shayan1414/" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://web.facebook.com/profile.php?id=61555804587576" target="_blank"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Shayan Ali. All rights reserved.</p>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="main.js"></script>
+    <a href="https://wa.me/923189718547" id="whatsapp-button" target="_blank" title="chat with us on whatsapp">
+        <img src="WhatsApp.svg.webp" id="whatsapp-image">
+    </a>
+</body>
+</html>
